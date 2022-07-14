@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useTodos } from "@/stores/todos";
+import toast from "../alerts/toast";
 
 const todo = ref("");
 
@@ -8,6 +9,8 @@ const store = useTodos();
 
 const addItemToStore = (title) => {
   store.addTodo(title);
+
+  toast("success", `"${title}" added to your todo list`);
 
   todo.value = "";
 };

@@ -1,14 +1,18 @@
 <script setup>
+import toast from "../alerts/toast";
 import { useTodos } from "../stores/todos";
 
 const props = defineProps({
   id: Number,
+  title: String,
 });
 
 const store = useTodos();
 
 const removeItemFromTodo = (int) => {
   store.deleteTodo(int);
+
+  toast("success", `"${props.title}" removed from your todo list`);
 };
 </script>
 

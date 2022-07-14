@@ -26,7 +26,8 @@ const { todos } = storeToRefs(store);
           />
         </div>
       </div>
-      <TodoRemove :id="todo.id" />
+      <TodoRemove :id="todo.id" :title="todo.title" />
     </div>
   </div>
+  <p class="mb-1 text-center" v-if="!todos.length">No todos in your list!</p>
 </template>
