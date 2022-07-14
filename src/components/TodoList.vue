@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
+import { useTodos } from "@/stores/todos";
+import { storeToRefs } from "pinia";
+import TodoRemove from "./TodoRemove.vue";
 
-const todos = ref([
-  { id: 1, title: "Lorem ipsum", status: false },
-  { id: 2, title: "Dolore ipsem", status: true },
-  { id: 3, title: "Sit amet", status: false },
-]);
+const store = useTodos();
+
+const { todos } = storeToRefs(store);
 </script>
 
 <template>
@@ -26,15 +26,7 @@ const todos = ref([
           />
         </div>
       </div>
-      <div class="col-1 text-end">
-        <i class="fas fa-times cursor-pointer text-danger mt-2"></i>
-      </div>
+      <TodoRemove :id="todo.id" />
     </div>
   </div>
 </template>
-
-<style scoped>
-.cursor-pointer {
-  cursor: pointer;
-}
-</style>

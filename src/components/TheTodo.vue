@@ -2,9 +2,9 @@
 import TodoList from "./TodoList.vue";
 import TodoFilters from "./TodoFilters.vue";
 import TodoClearCompleted from "./TodoClearCompleted.vue";
+import TodoForm from "./TodoForm.vue";
 
 const header = "ToDo";
-const placeholder = "What needs to be done?";
 </script>
 
 <template>
@@ -20,14 +20,7 @@ const placeholder = "What needs to be done?";
             </div>
             <div class="card-body">
               <div class="row justify-content-between">
-                <div class="col-12 mb-4">
-                  <input
-                    type="text"
-                    class="form-control shadow-sm py-2"
-                    :placeholder="placeholder"
-                    autofocus
-                  />
-                </div>
+                <TodoForm />
                 <TodoList />
               </div>
             </div>

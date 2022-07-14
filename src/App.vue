@@ -6,4 +6,8 @@ import TheTodo from "./components/TheTodo.vue";
   <TheTodo />
 </template>
 
-<style scoped></style>
+<style>
+.cursor-pointer {
+  cursor: pointer;
+}
+</style>
