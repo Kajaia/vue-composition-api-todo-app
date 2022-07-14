@@ -27,5 +27,8 @@ export const useTodos = defineStore({
         todo.status = !todo.status;
       }
     },
+    clearCompleted() {
+      this.todos = this.todos.filter((todo) => todo.status !== true);
+    },
   },
 });
