@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import TheTodo from "./components/TheTodo.vue";
+</script>
 
 <template>
-  <div>ToDo</div>
+  <TheTodo />
 </template>
 
 <style scoped></style>
