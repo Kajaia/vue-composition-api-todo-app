@@ -2,6 +2,7 @@
 import { useTodos } from "@/stores/todos";
 import { storeToRefs } from "pinia";
 import TodoRemove from "./TodoRemove.vue";
+import TodoCheck from "./TodoCheck.vue";
 
 const store = useTodos();
 
@@ -13,16 +14,12 @@ const { todos } = storeToRefs(store);
     <div class="row">
       <div class="col-11">
         <div class="d-flex align-items-center gap-1">
-          <div class="form-check">
-            <input
-              class="form-check-input shadow-sm p-2 cursor-pointer"
-              type="checkbox"
-            />
-          </div>
+          <TodoCheck :todo="todo" />
           <input
             type="text"
             class="form-control w-100 border-0"
             :value="todo.title"
+            :class="{ 'line-through': todo.status }"
           />
         </div>
       </div>
@@ -31,3 +28,9 @@ const { todos } = storeToRefs(store);
   </div>
   <p class="mb-1 text-center" v-if="!todos.length">No todos in your list!</p>
 </template>
+
+<style scoped>
+.line-through {
+  text-decoration: line-through;
+}
+</style>

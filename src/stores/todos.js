@@ -20,5 +20,12 @@ export const useTodos = defineStore({
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
+    checkTodo(id) {
+      const todo = this.todos.find((todo) => todo.id === id);
+
+      if (todo) {
+        todo.status = !todo.status;
+      }
+    },
   },
 });
