@@ -3,6 +3,7 @@ import { useTodos } from "@/stores/todos";
 import { storeToRefs } from "pinia";
 import TodoRemove from "./TodoRemove.vue";
 import TodoCheck from "./TodoCheck.vue";
+import TodoEditTitle from "./TodoEditTitle.vue";
 
 const store = useTodos();
 
@@ -15,12 +16,7 @@ const { todos } = storeToRefs(store);
       <div class="col-11">
         <div class="d-flex align-items-center gap-1">
           <TodoCheck :todo="todo" />
-          <input
-            type="text"
-            class="form-control w-100 border-0"
-            :value="todo.title"
-            :class="{ 'line-through': todo.status }"
-          />
+          <TodoEditTitle :todo="todo" />
         </div>
       </div>
       <TodoRemove :id="todo.id" :title="todo.title" />

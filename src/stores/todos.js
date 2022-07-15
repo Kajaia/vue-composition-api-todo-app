@@ -30,5 +30,12 @@ export const useTodos = defineStore({
     clearCompleted() {
       this.todos = this.todos.filter((todo) => todo.status !== true);
     },
+    updateTodoTitle(obj, str) {
+      const todo = this.todos.find((todo) => todo.id === obj.id);
+
+      if (todo) {
+        todo.title = str;
+      }
+    },
   },
 });
