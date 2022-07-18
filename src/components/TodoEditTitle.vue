@@ -16,9 +16,11 @@ onMounted(() => {
 const store = useTodos();
 
 const updateTodoItemTitle = () => {
-  store.updateTodoTitle(props.todo, title.value);
+  if (props.todo.title !== title.value) {
+    store.updateTodoTitle(props.todo, title.value);
 
-  toast("success", `Updated todo item title to "${title.value}"`);
+    toast("success", `Updated todo item title to "${title.value}"`);
+  }
 };
 </script>
 
