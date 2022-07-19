@@ -5,9 +5,11 @@ import { useTodos } from "../stores/todos";
 const store = useTodos();
 
 const clearCompletedTodos = () => {
-  store.clearCompleted();
+  if (store.completedTodosCount) {
+    store.clearCompleted();
 
-  toast("success", "Cleared all completed todos from your list");
+    toast("success", "Cleared all completed todos from your list");
+  }
 };
 </script>
 
@@ -15,6 +17,7 @@ const clearCompletedTodos = () => {
   <div>
     <button
       @click.stop="clearCompletedTodos"
+      v-if="store.completedTodosCount"
       class="btn btn-sm btn-danger shadow-sm px-3"
     >
       Clear completed

@@ -14,7 +14,22 @@ export const useTodos = defineStore({
           { id: 2, title: "Dolore ipsem", status: true },
           { id: 3, title: "Sit amet", status: false },
         ],
+    status: "all",
   }),
+  getters: {
+    filteredTodos() {
+      if (this.status === "all") {
+        return this.todos;
+      } else if (this.status === "active") {
+        return this.todos.filter((todo) => todo.status === false);
+      } else if (this.status === "completed") {
+        return this.todos.filter((todo) => todo.status === true);
+      }
+    },
+    completedTodosCount() {
+      return this.todos.filter((todo) => todo.status === true).length;
+    },
+  },
   actions: {
     addTodo(title) {
       this.todos.push({
@@ -52,6 +67,9 @@ export const useTodos = defineStore({
       }
 
       updateLocalStorage(this.todos);
+    },
+    statusChange(status) {
+      this.status = status;
     },
   },
 });
